@@ -17,6 +17,9 @@
     "seoltab",
     "sdk"
   ],
+  "publishConfig": {
+    "access": "public"
+  },  
   "repository": "https://github.com/GoodOnuii/seoltab.js.git",
   "devDependencies": {
     "@commitlint/cli": "^16.0.2",
