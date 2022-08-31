@@ -9,13 +9,13 @@ type AuthorizeInput = {
 
 const authorize = (input: AuthorizeInput) => {
   const query = Object.entries({
-    client_id: store.state?.clientId,
-    redirect_uri: input?.redirectUri,
+    // client_id: store.state?.clientId,
+    continue: input?.redirectUri,
   })
     .map((e) => (e[1] ? e.join("=") : null))
     .filter(Boolean)
 
-  let uri = `https://auth.hana.ooo/oauth/authorize`
+  let uri = `https://auth.seoltab.com/signin/`
   if (query) uri += `?${query.join("&")}`
 
   location.href = uri
@@ -31,19 +31,18 @@ type TokenInput = {
 
 const token = async (input: TokenInput) => {
   const res = await axios.post(
-    "https://xauth.hana.ooo/oauth/token",
+    "https://api.auth.seoltab.com/graphql",
     {
-      client_id: store.state.clientId,
-      grant_type: input.grantType,
-      redirect_uri: input.redirectUri,
-      refresh_token: input.refreshToken ?? undefined,
-      code: input.code ?? undefined,
-      client_secret: input.clientSecret ?? undefined,
+      query: `mutation refresh {
+        refresh {
+          token
+        }
+      }`
     },
     { withCredentials: true }
   )
 
-  return res.data
+  return res.data.data?.refresh
 }
 
 type TokenInfoInput = {
@@ -52,11 +51,11 @@ type TokenInfoInput = {
 
 const tokenInfo = async (input: TokenInfoInput) => {
   const JWKS = jose.createRemoteJWKSet(
-    new URL("https://xauth.hana.ooo/.well-known/jwks")
+    new URL("https://api.auth.seoltab.com/.well-known/jwks")
   )
 
   const { payload } = await jose.jwtVerify(input.accessToken, JWKS, {
-    issuer: "auth.hana.ooo",
+    issuer: "auth.seoltab.com",
   })
 
   return payload

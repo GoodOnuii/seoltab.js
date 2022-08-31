@@ -17,8 +17,8 @@ module.exports = {
   },
   output: {
     path: require("path").resolve(__dirname, "dist"),
-    filename: "hana.js",
-    library: "Hana",
+    filename: "seoltab.js",
+    library: "Seoltab",
     libraryTarget: "umd",
     globalObject: "this",
   },

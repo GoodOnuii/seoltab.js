@@ -1,8 +1,11 @@
 {
-  "name": "hana.js",
-  "version": "0.0.11",
+  "name": "@seoltab/seoltab.js",
+  "version": "0.1.0",
+  "contributors": [
+    "Hana <momenthana@kakao.com>"
+  ],
   "main": "dist/index.js",
-  "browser": "dist/hana.js",
+  "browser": "dist/seoltab.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc && webpack",
@@ -10,8 +13,11 @@
     "pub": "yarn build && yarn publish",
     "prepare": "husky install"
   },
-  "repository": "https://github.com/momenthana/hana.js.git",
-  "author": "Hana <momenthana@kakao.com>",
+  "keywords": [
+    "seoltab",
+    "sdk"
+  ],
+  "repository": "https://github.com/GoodOnuii/seoltab.js.git",
   "devDependencies": {
     "@commitlint/cli": "^16.0.2",
     "@commitlint/config-conventional": "^16.0.0",

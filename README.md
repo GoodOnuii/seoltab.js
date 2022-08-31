@@ -1,37 +1,37 @@
-# hana.js
+# seoltab.js
 
-Hana SDK for JavaScript
+Seoltab SDK for JavaScript
 
 ## 설치하기
 
 Using NPM
 
 ```
-npm install hana.js
+npm install @seoltab/seoltab.js
 ```
 
 Using Yarn
 
 ```
-yarn add hana.js
+yarn add @seoltab/seoltab.js
 ```
 
 Using CDN
 
 ```html
-<script src="https://unpkg.com/hana.js"></script>
+<script src="https://unpkg.com/@seoltab/seoltab.js"></script>
 ```
 
 ## 시작하기
 
-### Hana.init()
+### Seoltab.init()
 
 JavaScript SDK 초기화 예제입니다.
 
 ```js
-const Hana = require("hana.js")
+const Seoltab = require("seoltab.js")
 
-Hana.init({
+Seoltab.init({
   clientId: "31024ffa-5ef0-413e-9bf5-f1761638b6d8",
 })
 ```
@@ -44,13 +44,13 @@ Hana.init({
 
 ## 기능 명세
 
-### Hana.Auth.authorize()
+### Seoltab.Auth.authorize()
 
 사용자가 앱에 로그인할 수 있도록 인가 코드를 요청하는 함수입니다. 인가 코드를 받을 수 있는 서버 개발이 필요합니다.
 
 ```js
-Hana.Auth.authorize({
-  redirectUri: "https://hana.ooo/authorize",
+Seoltab.Auth.authorize({
+  redirectUri: "https://seoltab.com/authorize",
 })
 ```
 
@@ -61,12 +61,12 @@ Hana.Auth.authorize({
 | `redirectUri` | string |    N     | 인가 코드를 받을 URI |
 | `scope`       | string |    N     | 추가 동의 받을 항목  |
 
-### Hana.Auth.getClientId()
+### Seoltab.Auth.getClientId()
 
 사용 중인 Client ID
 
 ```js
-Hana.Auth.getClientId()
+Seoltab.Auth.getClientId()
 ```
 
 #### 출력결과
@@ -75,14 +75,14 @@ Hana.Auth.getClientId()
 31024ffa-5ef0-413e-9bf5-f1761638b6d8
 ```
 
-### Hana.Auth.token()
+### Seoltab.Auth.token()
 
-사용자가 앱에 로그인할 수 있도록 인가 코드를 요청하는 함수입니다. 인가 코드를 받을 수 있는 서버 개발이 필요합니다.
+사용자가 앱에 로그인할 수 있도록 토큰을 요청하는 함수입니다. 토큰을 받을 수 있는 서버 개발이 필요합니다.
 
 ```js
-Hana.Auth.token({
+Seoltab.Auth.token({
   grantType: "authorization_code",
-  redirectUri: "https://hana.ooo/authorize",
+  redirectUri: "https://seoltab.com/authorize",
   code: "128ba3b3-f2ca-4a33-afaf-aae20ba79093",
 })
 ```
@@ -92,8 +92,8 @@ Hana.Auth.token({
 | Name          |  Type  | Required | Description               |
 | ------------- | :----: | :------: | ------------------------- |
 | `grantType`   | string |    Y     | authorization_code로 고정 |
-| `redirectUri` | string |    Y     | 인가 코드를 받을 URI      |
-| `code`        | string |    Y     | 추가 동의 받을 항목       |
+| `redirectUri` | string |    Y     | 인가 코드를 받은 URI      |
+| `code`        | string |    N     | 인가 코드       |
 
 #### 출력결과
 
